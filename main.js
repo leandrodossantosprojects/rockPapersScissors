@@ -21,12 +21,19 @@ function getComputerChoice() {
   return choice;
 }
 
-btn.forEach((boton) =>
+let humanCount = 0;
+let comCount = 0;
+
+function humanChoice(boton) {
+  boton.addEventListener("click", () => boton.textContent.trim().toLowerCase());
+}
+
+btn.forEach(humanChoice);
+
+/*btn.forEach((boton) =>
   boton.addEventListener("click", function () {
     let humanChoice = boton.textContent.trim().toLowerCase();
     let computerChoice = getComputerChoice();
-    let humanCount = 0;
-    let comCount = 0;
     let result;
     if (humanChoice === computerChoice) {
       msg.textContent = "It's a tie";
@@ -36,40 +43,46 @@ btn.forEach((boton) =>
       (humanChoice === "paper" && computerChoice === "rock")
     ) {
       msg.textContent = `You won, ${humanChoice} beats ${computerChoice}.`;
-      humanCount++;
+      humanCount += 1;
     } else {
       msg.textContent = `You lose. ${computerChoice} beats ${humanChoice}.`;
-      comCount++;
+      comCount += 1;
     }
     counterCom.textContent = comCount;
     counterHuman.textContent = humanCount;
     return result;
   }),
-);
+);*/
 
-/*function playGame() {
+function playGame() {
   let humanScore = 0;
   let computerScore = 0;
   let winner;
-  function playRound(humanChoice, computerChoice) {
+  function playRound(humanChoice, getComputerChoice) {
     let result;
-    if (humanChoice === computerChoice) {
+    if (humanChoice === getComputerChoice) {
       result = console.log("It's a tie");
     } else if (
-      (humanChoice === "rock" && computerChoice === "scissors") ||
-      (humanChoice === "scissors" && computerChoice === "paper") ||
-      (humanChoice === "paper" && computerChoice === "rock")
+      (humanChoice === "rock" && getComputerChoice === "scissors") ||
+      (humanChoice === "scissors" && getComputerChoice === "paper") ||
+      (humanChoice === "paper" && getComputerChoice === "rock")
     ) {
-      result = console.log(`You won, ${humanChoice} beats ${computerChoice}.`);
+      result = console.log(
+        `You won, ${humanChoice} beats ${getComputerChoice}.`,
+      );
       humanScore++;
+      counterHuman.textContent = humanScore;
     } else {
-      result = console.log(`You lose. ${computerChoice} beats ${humanChoice}.`);
+      result = console.log(
+        `You lose. ${getComputerChoice} beats ${humanChoice}.`,
+      );
       computerScore++;
+      counterCom.textContent = computerScore;
     }
     return result;
   }
   for (i = 0; i < 5; i++) {
-    playRound(getHumanChoice(), getComputerChoice());
+    playRound(humanChoice(), getComputerChoice());
   }
 
   if (humanScore === computerScore) {
@@ -88,4 +101,4 @@ btn.forEach((boton) =>
         YOU = ${humanScore}
         You lose the game`);
   }
-}*/
+}
