@@ -1,4 +1,7 @@
 let btn = document.querySelectorAll(".choice");
+let msg = document.querySelector("#msg");
+let counterCom = document.querySelector("#counter-com");
+let counterHuman = document.querySelector("#counter-human");
 
 function getComputerChoice() {
   let choice;
@@ -18,28 +21,28 @@ function getComputerChoice() {
   return choice;
 }
 
-function getHumanChoice() {
-  let choice = "";
-  return choice.trim().toLowerCase();
-}
-
 btn.forEach((boton) =>
   boton.addEventListener("click", function () {
-    let humanChoice = (texto = boton.textContent.trim());
+    let humanChoice = boton.textContent.trim().toLowerCase();
     let computerChoice = getComputerChoice();
+    let humanCount = 0;
+    let comCount = 0;
     let result;
     if (humanChoice === computerChoice) {
-      result = console.log("It's a tie");
+      msg.textContent = "It's a tie";
     } else if (
       (humanChoice === "rock" && computerChoice === "scissors") ||
       (humanChoice === "scissors" && computerChoice === "paper") ||
       (humanChoice === "paper" && computerChoice === "rock")
     ) {
-      result = console.log(`You won, ${humanChoice} beats ${computerChoice}.`);
-      humanScore++;
+      msg.textContent = `You won, ${humanChoice} beats ${computerChoice}.`;
+      humanCount++;
     } else {
-      result = console.log(`You lose. ${computerChoice} beats ${humanChoice}.`);
+      msg.textContent = `You lose. ${computerChoice} beats ${humanChoice}.`;
+      comCount++;
     }
+    counterCom.textContent = comCount;
+    counterHuman.textContent = humanCount;
     return result;
   }),
 );

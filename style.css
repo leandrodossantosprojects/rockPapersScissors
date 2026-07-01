@@ -2,6 +2,17 @@
   background-color: black;
   color: white;
   display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+#game {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
 }
 
 #btns {
@@ -16,4 +27,39 @@
 .choice {
   width: 200px;
   height: 50px;
+}
+
+#msg-container {
+  display: flex;
+  width: 600px;
+  height: 200px;
+  background-color: blue;
+  color: white;
+  border: 20px solid black;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+#msg {
+  font-size: 2rem;
+  flex-wrap: 1;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  background-color: grey;
+  color: white;
+  border: 2px solid red;
+  border-radius: 10px;
+  font-size: 8rem;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 2rem;
 }
