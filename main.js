@@ -50,6 +50,51 @@ start.addEventListener("click", () => {
   choices.appendChild(scissors);
 
   start.remove();
+
+  function getComputerChoice() {
+    let choice;
+
+    let randomNum = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    switch (randomNum) {
+      case 1:
+        choice = "scissors";
+        break;
+      case 2:
+        choice = "paper";
+        break;
+      case 3:
+        choice = "rock";
+        break;
+    }
+    return choice;
+  }
+
+  let selectWeapon = document.querySelectorAll(".choice");
+
+  selectWeapon.forEach((boton) =>
+    boton.addEventListener("click", function () {
+      let humanChoice = boton.textContent.trim().toLowerCase();
+      let computerChoice = getComputerChoice();
+      let humanCount = 0;
+      let comCount = 0;
+
+      if (humanChoice === computerChoice) {
+        msg.textContent = "It's a tie";
+      } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "paper") ||
+        (humanChoice === "paper" && computerChoice === "rock")
+      ) {
+        msg.textContent = `You won, ${humanChoice} beats ${computerChoice}.`;
+        humanCount += 1;
+      } else {
+        msg.textContent = `You lose. ${computerChoice} beats ${humanChoice}.`;
+        comCount += 1;
+      }
+      counterCom.textContent = comCount;
+      counterHuman.textContent = humanCount;
+    }),
+  );
 });
 
 /*
