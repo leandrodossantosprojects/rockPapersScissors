@@ -1,8 +1,58 @@
-let btn = document.querySelectorAll(".choice");
-let msg = document.querySelector("#msg");
-let counterCom = document.querySelector("#counter-com");
-let counterHuman = document.querySelector("#counter-human");
+let start = document.getElementById("start");
+let container = document.getElementById("container");
 
+start.addEventListener("click", () => {
+  let game = document.createElement("div");
+  let msg = document.createElement("div");
+  let counterHuman = document.createElement("div");
+  let counterCom = document.createElement("div");
+  let choices = document.createElement("div");
+  let rock = document.createElement("button");
+  let paper = document.createElement("button");
+  let scissors = document.createElement("button");
+
+  game.id = "game";
+  msg.id = "msg";
+  Object.assign(counterHuman, {
+    id: "counterHuman",
+    className: "counter",
+    textContent: 0,
+  });
+  Object.assign(counterCom, {
+    id: "counterCom",
+    className: "counter",
+    textContent: 0,
+  });
+  choices.id = "choices";
+  Object.assign(rock, {
+    id: "rock",
+    className: "choice",
+    textContent: "Rock",
+  });
+  Object.assign(paper, {
+    id: "paper",
+    className: "choice",
+    textContent: "Paper",
+  });
+  Object.assign(scissors, {
+    id: "scissors",
+    className: "choice",
+    textContent: "scissors",
+  });
+
+  container.appendChild(game);
+  container.appendChild(choices);
+  game.appendChild(counterCom);
+  game.appendChild(msg);
+  game.appendChild(counterHuman);
+  choices.appendChild(rock);
+  choices.appendChild(paper);
+  choices.appendChild(scissors);
+
+  start.remove();
+});
+
+/*
 function getComputerChoice() {
   let choice;
 
@@ -53,7 +103,7 @@ btn.forEach(humanChoice);
     return result;
   }),
 );*/
-
+/*
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
@@ -102,3 +152,4 @@ function playGame() {
         You lose the game`);
   }
 }
+*/
